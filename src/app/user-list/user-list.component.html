@@ -1,11 +1,16 @@
 <p>user-list works!</p>
+<p>{{tmpVal}}</p>
   <mat-selection-list #users>
-    <mat-list-option *ngFor="let user of usersList">
-      <mat-icon mat-list-icon>folder</mat-icon>
+    <mat-list-option *ngFor="let user of usersList; let i = index;"
+      [ngClass] = "{'grey':i%2}">
+      <div>
+<!--      <mat-icon mat-list-icon class="item" >folder</mat-icon>-->
 <!--      <span>{{user.id}}</span>-->
-        <span>{{user.name}}</span>
-          <span>{{user.username}}</span>
-            <span>{{user.email}}</span>
+        <span class="item" >{{user.name}}</span>
+        <span class="item" >{{user.username}}</span>
+<!--        <span  class="item" >{{user.email}}</span>-->
+        <span *ngIf="user.role === 'Admin'" class="item" >{{user.role}}</span>
+      </div>
     </mat-list-option>
   </mat-selection-list>
 <p>
